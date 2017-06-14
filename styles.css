@@ -1,0 +1,29 @@
+.customers{
+  display: flex;
+  flex-wrap: wrap;
+}
+ul {
+  list-style: none;
+}
+.customer{
+width: 24%;
+  text-align: center;
+}
+.address {
+  text-transform: capitalize;
+}
+#phone {
+  text-decoration: line-through;
+}
+
+#names{
+  text-decoration: underline;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#cell{
+  padding-top: 20px;
+  color: #68f2ed;
+  text-shadow: 5px 5px 5px;
+}

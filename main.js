@@ -7,31 +7,39 @@ fetch('https://randomuser.me/api/?results=12')
       return;
     }
     response.json().then(function (data) {
-      // console.log(data.results);
-      let name = data.results;
+      console.log(data.results);
+      let customers = data.results;
       // console.log(name);
 
-
-      function renderName(){
+      function renderCustomers(){
         return `
 
-        ${name.map(name =>
-        `<ul>
-        <li> ${name.name.first} ${name.name.last}</li>
-         <li> ${name.email}</li>
-         <li> ${name.location.street}</li>
-         <li> ${name.location.city}</li>
-         <li> ${name.location.state}</li>
-         <li> ${name.location.postcode}</li>
-         <li> ${name.phone}</li>`).join('')}
-        </ul>
-        `;
+        ${customers.map(customer => `
+          <div class="customer">
+            <ul>
+
+                  <img src="${customer.picture.large}">
+                  <li id="names"> ${customer.name.first} ${customer.name.last}</li>
+                  <li> ${customer.email}</li>
+                  <li class="address"> ${customer.location.street}</li>
+
+                  <li class="address"> ${customer.location.city}
+                   ${customer.location.state}
+                   ${customer.location.postcode}</li>
+                  <li id="phone"> ${customer.phone}</li>
+                  <li id="cell"> ${customer.cell}</li>
+
+            </ul>
+          </div>
+          `).join('')}
+        `
       }
 
-      let test1 =
-      `<div class="customers">
-      <p>Name ${renderName()}</p>
-      </div>`
+      let test1 = `
+      <div class="customers">
+        ${renderCustomers()}
+      </div>
+      `
 
       document.body.innerHTML = test1;
     })
